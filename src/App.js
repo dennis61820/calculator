@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import { numbers, operators } from './data'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='calculator-grid'>
+      <div className='display' id='display'>
+        <div className='previous-operand'></div>
+        <div className='current-operand'></div>
+      </div>
+      <button id='clear'>AC</button>
+      <button>C</button>
+      {numbers.map((num) => {
+        return (
+          <button key={num.id} id={num.id}>
+            {num.value}
+          </button>
+        )
+      })}
+      {operators.map((operator) => {
+        return (
+          <button key={operator.id} id={operator.id} value={operator.value}>
+            {operator.value}
+          </button>
+        )
+      })}
+      <button id='equals'>=</button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
